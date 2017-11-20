@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace KillProcess
 {
-    public class ApplicationViewModel
+    public class ApplicationViewModel : PropertyChangedClass
     {
         public ApplicationViewModel()
         {
@@ -22,9 +22,18 @@ namespace KillProcess
                 ProcessName.Replace(".exe", "");
             try
             {
-                foreach (Process p in Process.GetProcessesByName(ProcessName))
-                    p.Kill();
-                MessageBox.Show($"{ProcessName} seems killed!");
+                Process[] processNames = Process.GetProcessesByName(ProcessName);
+
+                if (processNames.Length == 0)
+                {
+                    MessageBox.Show($"{ProcessName} not found!");
+                }
+                else
+                {
+                    foreach (Process p in processNames)
+                        p.Kill();
+                    MessageBox.Show($"{ProcessName} killed!");
+                }
             }
             catch (Exception ex)
             {
