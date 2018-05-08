@@ -16,7 +16,7 @@ namespace KillProcess
             _canExecute = canExecute ?? (p => true);
         }
 
-        public RelayCommand(Action execute) : this(p => execute(), (Func<object, bool>)null) { }
+        public RelayCommand(Action execute) : this(p => execute(), (Func<object, bool>) null) { }
 
         public RelayCommand(Action execute, Func<bool> canExecute) : this(p => execute(), p => canExecute()) { }
 
@@ -28,8 +28,10 @@ namespace KillProcess
             remove => CommandManager.RequerySuggested -= value;
         }
 
-        public void Execute(object parameter) => _execute(parameter);
+        public void Execute(object parameter)
+            => _execute(parameter);
 
-        public bool CanExecute(object parameter) => _canExecute(parameter);
+        public bool CanExecute(object parameter)
+            => _canExecute(parameter);
     }
 }

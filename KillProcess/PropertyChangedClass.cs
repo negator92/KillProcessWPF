@@ -8,9 +8,7 @@ namespace KillProcess
         public virtual event PropertyChangedEventHandler PropertyChanged;
 
         public virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         public virtual void OnPropertyChanged(params string[] propertyNames)
         {

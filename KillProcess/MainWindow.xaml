@@ -3,14 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        DataContext="{Binding ApplicationViewModel, Source={x:Static Application.Current}}"
-        mc:Ignorable="d" Title="KillProcess" MinHeight="100" MinWidth="325" Height="150" Width="325" Background="#333333">
+        DataContext="{Binding ApplicationViewModel, Source={x:Static Application.Current}}" mc:Ignorable="d"
+        Title="KillProcess" MinHeight="100" MinWidth="325" Height="150" Width="325" Background="#333333">
     <DockPanel Margin="5">
-        <TextBlock Text="Process:" VerticalAlignment="Center" Foreground="#EEEEEE" DockPanel.Dock="Left" Margin="0,0,5,0" />
-        <Button Command="{Binding KillProcessCommand}" VerticalAlignment="Center" DockPanel.Dock="Right" Margin="5,0,0,0">
+        <TextBlock Text="Process:" VerticalAlignment="Center" Foreground="#EEEEEE" DockPanel.Dock="Left"
+                   Margin="0,0,5,0" />
+        <Button Command="{Binding KillProcessCommand}" VerticalAlignment="Center" DockPanel.Dock="Right"
+                Margin="5,0,0,0">
             <TextBlock Text="Kill" Padding="3" />
         </Button>
-        <TextBox Text="{Binding ProcessName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Background="#EEEEEE" Padding="3">
+        <TextBox Text="{Binding ProcessName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"
+                 SelectionBrush="Blue" SelectionOpacity="0.25" Background="#EEEEEE" Padding="3" x:Name="textBox">
             <TextBox.InputBindings>
                 <KeyBinding Command="{Binding KillProcessCommand}" Key="Enter" />
             </TextBox.InputBindings>
